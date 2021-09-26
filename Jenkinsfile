@@ -4,10 +4,9 @@ pipeline {
 
     stages {
         stage('Hello') {
-            build job: "BUILD", 
-				    parameters: [
-					    string(name: "BUILD_TYPE", value: "HEALTH")
-				    ]
+            triggerRemoteJob job: "http://jenkins.beyondminds.ai:8080/job/Ayub/job/BUILD/build?token=1234", 
+				    parameters: "BUILD_TYPE=HEALTH")
+				    
           }
     }
 }
