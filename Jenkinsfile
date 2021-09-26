@@ -9,7 +9,7 @@ pipeline {
 			script {
 				def repo = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
 				triggerRemoteJob( job: "http://jenkins.beyondminds.ai:8080/job/Ayub/job/BUILD/build?token=1234",
-						 parameters:"BUILD_TYPE"="${repo}")
+						 parameters:"BUILD_TYPE=${repo}")
 			}
 		}
 				    
