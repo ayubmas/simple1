@@ -8,7 +8,9 @@ pipeline {
 		steps {
 			script {
 				def repo = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
-				curl -x POST "http://jenkins.beyondminds.ai:8080/job/Ayub/job/BUILD/buildWithParameters?token=1234&BUILD_TYPE=$repo"
+				final String url = "http://jenkins.beyondminds.ai:8080/job/Ayub/job/BUILD/buildWithParameters?token=1234&BUILD_TYPE=$repo"
+                    		final String response = sh(script: "curl -s $url", returnStdout: true).trim()
+                    		echo response
 			}
 		}
 				    
