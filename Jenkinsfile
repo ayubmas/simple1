@@ -9,10 +9,9 @@ pipeline {
 			script {
 				final String repo = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
 				final String user = "amassalha:1182626fa7f66f2e71672923dc955dce45"
-				def params = {"parameter": [{"name":"token", "value":"1234"}, {"name":"BUILD_TYPE", "value":"${repo}"}]}
-				final String url = "http://jenkins.beyondminds.ai:8080/job/Ayub/job/BUILD/buildWithParameters"
+				final String url = "http://jenkins.beyondminds.ai:8080/job/Ayub/job/BUILD/buildWithParameters?'token=1234&BUILD_TYPE=${repo}'"
 				sh "which curl"
-				final String response = sh(script: "/usr/bin/curl -I -k -vv -X POST -u ${user} --data-urlencode json='${params}' ${url}", returnStdout: true).trim()
+				final String response = sh(script: "/usr/bin/curl -i -vv -X POST -u ${user} ${url}", returnStdout: true).trim()
 				echo response
 			}
 		}
