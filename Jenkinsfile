@@ -12,7 +12,7 @@ pipeline {
 				final String params = '{"parameter": [{"name":"token", "value":"1234"}, {"name":"BUILD_TYPE", "value":"${repo}"}]}'
 				final String url = "http://jenkins.beyondminds.ai:8080/job/Ayub/job/BUILD/buildWithParameters"
 				sh "which curl"
-				final String response = sh(script: "/usr/bin/curl -I -k -vv -X POST -u ${user} --data-urlencode json=${params} ${url}", returnStdout: true).trim()
+				final String response = sh(script: "/usr/bin/curl -I -k -vv -X POST -u ${user} --data-urlencode json='${params}' ${url}", returnStdout: true).trim()
 				echo response
 			}
 		}
