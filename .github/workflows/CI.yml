@@ -21,7 +21,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo $github_event_path
+        run: echo $GITHUB_EVENT_PATH
+        
+      
 
       # Runs a set of commands using the runners shell
       - name: Run a single command
@@ -35,5 +37,7 @@ jobs:
         
       - name: github.head_ref
         run: echo $github_head_ref
+      
+      - run: env
               
       
